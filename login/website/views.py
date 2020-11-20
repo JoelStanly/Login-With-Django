@@ -12,7 +12,10 @@ def create(response):
         if form1.is_valid():
             n=form1.cleaned_data["name"]
             p=form1.cleaned_data["password"]
-            return render(response,"base.html",{})
+            if(n=="user" and p=="joel"):
+                return render(response,"base.html",{})
+            else:
+                return render(response,"create.html",{"form":form})
     else:
         form=LoginDetails()
         return render(response,"create.html",{"form":form})
